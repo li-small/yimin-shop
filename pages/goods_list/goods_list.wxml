@@ -1,0 +1,74 @@
+<!-- 搜索框模块 -->
+<searchInput></searchInput>
+<!-- 顶部导航栏模块 -->
+<tabs tabs="{{tabs}}" bindchangeTabItem="handleChangeTabItem">
+  <block wx:if="{{tabs[0].isActive}}">
+    <view class="first_tab">
+      <navigator
+        class="goods_item"
+        wx:for="{{goodsList}}"
+        wx:key="goods_id"
+        url="../goods_detail/goods_detail?goods_id={{item.goods_id}}"
+      >
+        <!-- 左侧图片模块 -->
+        <view class="goods_img">
+          <image
+            mode="widthFix"
+            src="{{item.goods_small_logo?item.goods_small_logo:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic.soutu123.com%2Felement_origin_min_pic%2F17%2F02%2F28%2F8e959816807d2a8b3796c76270ace890.jpg%21%2Ffw%2F700%2Fquality%2F90%2Funsharp%2Ftrue%2Fcompress%2Ftrue&refer=http%3A%2F%2Fpic.soutu123.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629260112&t=5015846a5f93324614430af5632b861e'}}"
+          />
+        </view>
+        <!-- 右侧商品信息模块 -->
+        <view class="goods_info">
+          <view class="goode_info_title">{{item.goods_name}}</view>
+          <view class="goods_info_price">￥{{item.goods_price}}</view>
+        </view>
+      </navigator>
+    </view>
+  </block>
+  <block wx:elif="{{tabs[1].isActive}}">
+    <view class="center_tab">
+      <navigator
+        class="goods_item"
+        wx:for="{{goodsList}}"
+        wx:key="goods_id"
+        url="../goods_detail/goods_detail?goods_id={{item.goods_id}}"
+      >
+        <!-- 左侧图片 -->
+        <view class="goods_img">
+          <image
+            mode="widthFix"
+            src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic.soutu123.com%2Felement_origin_min_pic%2F17%2F02%2F28%2F8e959816807d2a8b3796c76270ace890.jpg%21%2Ffw%2F700%2Fquality%2F90%2Funsharp%2Ftrue%2Fcompress%2Ftrue&refer=http%3A%2F%2Fpic.soutu123.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629260112&t=5015846a5f93324614430af5632b861e"
+          />
+        </view>
+        <!-- 右侧商品信息 -->
+        <view class="goods_info">
+          <view class="goode_info_title">{{item.goods_name}}</view>
+          <view class="goods_info_price">￥{{item.goods_price}}</view>
+        </view>
+      </navigator>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="tail_tab">
+      <navigator
+        class="goods_item"
+        wx:for="{{goodsList}}"
+        wx:key="goods_id"
+        url="../goods_detail/goods_detail?goods_id={{item.goods_id}}"
+      >
+        <!-- 左侧图片 -->
+        <view class="goods_img">
+          <image
+            mode="widthFix"
+            src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic.soutu123.com%2Felement_origin_min_pic%2F17%2F02%2F28%2F8e959816807d2a8b3796c76270ace890.jpg%21%2Ffw%2F700%2Fquality%2F90%2Funsharp%2Ftrue%2Fcompress%2Ftrue&refer=http%3A%2F%2Fpic.soutu123.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629260112&t=5015846a5f93324614430af5632b861e"
+          />
+        </view>
+        <!-- 右侧商品信息 -->
+        <view class="goods_info">
+          <view class="goode_info_title">{{item.goods_name}}</view>
+          <view class="goods_info_price">￥{{item.goods_price}}</view>
+        </view>
+      </navigator>
+    </view>
+  </block>
+</tabs>

@@ -1,0 +1,84 @@
+<!-- 获取收货地址模块 -->
+<view class="receive_address">
+  <!-- 空对象也为true 所以不能!address 要!address.userName -->
+  <view class="address_btn" wx:if="{{!address.userName}}">
+    <button bindtap="handleReceiveAddress" plain="{{true}}">获取收货地址</button>
+  </view>
+  <view wx:else>
+    <view class="user_info">
+      <view class="user_info_base">
+        <text class="user_name">收货人:{{address.userName}}</text>
+        <text class="user_phone">{{address.telNumber}}</text>
+      </view>
+      <view class="user_info_address">{{addressAll}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 购物车内容模块 -->
+<view class="cart_content">
+  <view class="cart_title">购物车</view>
+  <block wx:if="{{cartData.length!==0}}">
+    <view class="cart_goods" wx:for="{{cartData}}" wx:key="goods_id">
+      <!-- 复选框 -->
+      <view class="cart_select">
+        <checkbox-group data-id="{{item.goods_id}}" bindchange="handleCartSelect">
+          <checkbox checked="{{item.checked}}"></checkbox>
+        </checkbox-group>
+      </view>
+      <!-- 商品图片 -->
+      <navigator class="cart_goods_img">
+        <image mode="widthFix" src="{{item.goods_small_logo}}" />
+      </navigator>
+      <!-- 商品信息 -->
+      <view class="cart_goods_info">
+        <view class="cart_goods_name">{{item.goods_name}}</view>
+        <view class="cart_goods_price_wrap">
+          <view class="cart_goods_price">￥{{item.goods_price}}</view>
+          <view class="cart_goods_count">
+            <view
+              class="count_sub"
+              bindtap="handleCount"
+              data-id="{{item.goods_id}}"
+              data-sign="{{-1}}"
+            >-</view>
+            <text class="goods_num">{{item.num}}</text>
+            <view
+              class="count_add"
+              bindtap="handleCount"
+              data-id="{{item.goods_id}}"
+              data-sign="{{1}}"
+            >+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <image
+      class="cart_none"
+      mode="widthFix"
+      src="https://img0.baidu.com/it/u=3074431641,2413950145&fm=26&fmt=auto&gp=0.jpg"
+    />
+  </block>
+</view>
+
+<!-- 底部工具栏模块 -->
+<view class="footer-tool">
+  <!-- 全选 -->
+  <view class="cart_selectAll">
+    <checkbox-group bindchange="handleCartSelectAll">
+      <checkbox checked="{{allChecked}}">全选</checkbox>
+    </checkbox-group>
+  </view>
+  <!-- 总价格 -->
+  <view class="cart_total_price">
+    <view class="total_price">
+      合计:
+      <text class="total_price_text">￥{{totalPrice}}</text>
+    </view>
+    <view>包含运费</view>
+  </view>
+  <!-- 结算 -->
+  <view class="cart_pay" bindtap="handlePay">结算({{totalNum}})</view>
+</view>

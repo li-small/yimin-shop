@@ -1,0 +1,15 @@
+.up_img_wrap {
+  position: relative;
+  width: 90rpx;
+  height: 90rpx;
+}
+.up_img_wrap image {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 15rpx;
+}
+.up_img_wrap icon {
+  position: absolute;
+  top: -20rpx;
+  right: -20rpx;
+}
